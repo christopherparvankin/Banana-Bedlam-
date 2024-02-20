@@ -11,6 +11,7 @@ class Game:
         self.PROJECTILE_DELTA = 60
         self.BANANA_VELOCITY = 5
         self.APE_VELOCITY = 5
+        self.MAX_APE_VELOCITY = 20
         self.BULLET_VELOCITY = 10
 
         # Logistic variables
@@ -39,7 +40,7 @@ class Game:
         self.CYCLES_TILL_INCREMENT = 5
         self.monk_rectangle.x = 0
         self.monk_rectangle.y = 300
-        self.MAX_VELOCITY = 40
+        self.MAX_VELOCITY = 80
         self.GAGA_BOOL = False
         self.KEN_BOOL = False
 
@@ -308,7 +309,8 @@ class Game:
                             self.PROJECTILE_DELTA -= 1
                             if self.BANANA_VELOCITY != self.MAX_VELOCITY:
                                 self.BANANA_VELOCITY += 1
-                                self.APE_VELOCITY += 1
+                                if not self.APE_VELOCITY > self.MAX_APE_VELOCITY:
+                                    self.APE_VELOCITY += 1
                 self.TIME_COUNT += 1
                 self.move_projectiles()
                 keys_pressed = pygame.key.get_pressed()
